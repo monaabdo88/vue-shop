@@ -1,0 +1,38 @@
+[
+	{
+		"id":"1",
+		"title":"Cheese",
+		"image" :"",
+		"price":"2.50"
+	},
+	{
+		"id":"2",
+		"title":"Crisps",
+		"image" :"",
+		"price":"3"
+	},
+	{
+		"id":"3",
+		"title":"Pizza",
+		"image" :"",
+		"price":"25"
+	},
+	{
+		"id":"4",
+		"title":"Chocolate",
+		"image" :"",
+		"price":"5"
+	},
+	{
+		"id":"5",
+		"title":"Self-raising flour",
+		"image" :"",
+		"price":"1.50"
+	},
+	{
+		"id":"6",
+		"title":"Ground almonds",
+		"image" :"",
+		"price":"12"
+	}
+]

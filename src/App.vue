@@ -1,28 +1,57 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+      	<div class="row">
+      		<div class="col-md-6" :key="product.id" v-for="product in Products">
+      			<Product :isInCart="isInCart(product)" v-on:add-to-cart="addToCart(product)" :product="product"></Product>
+
+      		</div>
+      	</div>
+      </div>
+      <div class="col-md-5 my-5">
+      	<Cart v-on:pay="payNow()" v-on:remove-product="RemoveItem($event)" :items="cart"></Cart>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Products from '@/products.json'
+import Product from '@/components/Product.vue'
+import Cart from '@/components/Cart.vue'
 export default {
   name: 'app',
-  components: {
-    HelloWorld
+  components:{
+  	Product,
+  	Cart
+  },
+  data(){
+  	return{
+  		Products,
+  		cart:[]
+  	}
+  },
+  methods:{
+  	addToCart(Product){
+  		this.cart.push(Product)
+  	},
+  	isInCart(Product){
+  		const Item = this.cart.find(Item => Item.id === Product.id)
+  		if(Item){
+  			return true
+  		}
+  		return false
+  	},
+  	RemoveItem(product){
+  		this.cart = this.cart.filter(item => item.id !== product.id)
+  	},
+  	payNow(){
+  		this.cart = []
+  		alert('Shopping Completed')
+  	}
   }
+  
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
